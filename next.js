@@ -1,4 +1,4 @@
-module.exports = {
+const baseConfig = {
   env: {
     browser: true,
     es2021: true,
@@ -8,29 +8,42 @@ module.exports = {
     'standard',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'next/core-web-vitals',
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
   },
   plugins: [
     'jsx-a11y',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'prettier',
   ],
   rules: {
-    'prettier/prettier': ["error", {
-      'printWidth': 80,
-      'tabWidth': 2,
-      'singleQuote': true,
-      'trailingComma': 'all',
-      'arrowParens': 'always',
-      'semi': false,
-      'endOfLine': 'auto',
-    }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react/no-unstable-nested-components': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        printWidth: 80,
+        tabWidth: 2,
+        singleQuote: true,
+        trailingComma: 'all',
+        arrowParens: 'always',
+        semi: false,
+        endOfLine: 'auto',
+      },
+    ],
     'jsx-a11y/alt-text': [
       'warn',
       {
@@ -49,8 +62,13 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      typescript: {},
+    },
     'import/parsers': {
       [require.resolve('@typescript-eslint/parser')]: ['.ts', '.tsx', '.d.ts'],
     },
-  }
-}
+  },
+};
+
+module.exports = baseConfig;

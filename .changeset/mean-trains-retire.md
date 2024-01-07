@@ -1,0 +1,5 @@
+---
+"@matheusmendesreis/eslint-config": major
+---
+
+#
